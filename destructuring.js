@@ -11,7 +11,7 @@ var carDetails = {
   year: 1994
 }
 
-// CODE HERE
+let { color, make, model, year } = carDetails;
 
 
 // ========================
@@ -21,7 +21,7 @@ var carDetails = {
 
 function greeting( obj ) {
   // CODE HERE
-  
+  let { firstName, lastName, title } = obj
   return 'Hello, ' + title + ' ' + firstName + ' ' + lastName + '!';
 }
 
@@ -31,7 +31,10 @@ function greeting( obj ) {
 
 // Write a function called totalPopulation that will take in an object. That object will have 4 properties named utah, california, texas and arizona. The property values will be numbers. Use object destructuring to save the property values to new variables. Sum up the values and return the total number.
 
-  // CODE HERE
+let totalPopulation = obj => {
+  let {utah, california, texas ,arizona} = obj
+  return utah + california + texas + arizona
+}
 
 
 // ========================
@@ -39,7 +42,12 @@ function greeting( obj ) {
 
 // Write a function called ingredients that will take in an object. This object will have 3 properties named carb, fat, and protein. The property values will be strings. Use object destructuring to save the property values to new variables. Push these new variables to an array and return the array. 
 
-  // CODE HERE
+let ingredients = obj => {
+  var newArray = []
+  let {carb, fat, protein} = obj
+  newArray.push(carb, fat, protein)
+  return newArray
+}
 
 
 // ========================
@@ -53,7 +61,17 @@ function greeting( obj ) {
 
 // Write a function called largeNumbers that will take a destructured object as it's parameter. The object properties will be named first, second, and third and their values will be numbers. Find the smallest number of the three and return that number.
 
-  // CODE HERE
+function largeNumbers({ first, second, third }) {
+  var smallest = 0;
+  if (first < second && first < third) {
+    smallest = first
+  } else if (second < first && second < third) {
+    smallest = second
+  } else {
+    smallest = third
+  }
+  return smallest
+}
 
 
 // ========================
@@ -61,4 +79,10 @@ function greeting( obj ) {
 
 // Write a function called numberGroups that will take a destructured object as it's parameter. The object properties will be named a, b, and c and their values will be arrays of numbers. Find the longest array and return that array. 
 
-  // CODE HERE
+let numberGroups = ({ a, b, c }) => {
+  let lng = 0
+  if (a.length > b.length) lng = a
+  else lng = b
+  if (c.length > lng.length) return c
+  return lng
+}
