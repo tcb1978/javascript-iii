@@ -36,7 +36,17 @@ var employees = [{
 //  2. If the employee's first name is Lorie, change her department to 'HR'.
 //  3. Return the updated employee array.
 
-// Code here
+let employeeUpdater = () => {
+  for (var i = 0; i < employees.length; i++) {
+    if (employees[i]['firstName'] === "Theo") {
+      employees.splice(i, 1)
+    }
+    else if (employees[i]['firstName'] === "Lorie") {
+      employees[i]['department'] = 'HR'
+    }
+  }
+  return employees
+}
 
 
 
@@ -54,10 +64,14 @@ var employees = [{
 
 var workplaceAccidents = [12, 56, 44, 3, 29, 56, 56, 3, 7, 12];
 
-// Code here
-
-
-
+let removeDuplicates = workplaceAccidents => {
+  for (var i = 0; i < workplaceAccidents.length; i++) {
+    if (workplaceAccidents.indexOf(workplaceAccidents[i]) !== i) {
+      workplaceAccidents.splice(i, 1)
+      i--
+    }
+  } return workplaceAccidents
+}
 
 
 
@@ -84,8 +98,9 @@ var cat = {
 
 // Code here
 
-var grumpyActivity;
-var fluffy2ndFriend;
+var grumpyActivity = cat.catFriends[0].activities[1];
+
+var fluffy2ndFriend = cat.catFriends[1].name;
 
 
 
@@ -122,7 +137,12 @@ var myCar = {
   ]
 }
 
-// Code here
+let recordCleaner = () => {
+  var array = myCar.accidents
+  for (let i = 0; i < array.length; i++) {
+    array[i].atFaultForAccident = false 
+  }
+}
 
 
 
