@@ -22,7 +22,7 @@ Each employee can:
 call your class Employee and receive all the data in the constructor in the order listed
 */
 
-class Employee() {
+class Employee {
     constructor(first_name, last_name, email, age) {
         this.first_name = first_name;
         this.last_name = last_name;
@@ -31,9 +31,13 @@ class Employee() {
     }
 
     makeWidget() {
-        return this.first_name + this.last_name + 'widget'
+        return `${this.first_name} ${this.last_name} Widget`
     }
 }
+
+
+let bart = new Employee('Bart', 'Bartus', 'bart@bart.bart', 29)
+bart
 
 /*
 
@@ -53,7 +57,7 @@ They can (methods) :
 call your class Manager
 
 */
-class Manager(first_name, last_name, email, age) {
+class Manager {
 constructor(first_name, last_name, email, age) {
     this.first_name = first_name;
     this.last_name = last_name;
@@ -63,11 +67,13 @@ constructor(first_name, last_name, email, age) {
     }
 
     hire(employee) {
-
+        this.reports.push(employee)
     }
 
     fire(index) {
-
+        this.reports = this.reports.filter((report, i) => {
+            return i !== index;
+        })
     }
 }
 
@@ -97,8 +103,70 @@ call your class ProgressiveManager
 */
 
 
+class ProgressiveManager {
+    constructor(first_name, last_name, email, age) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.age = age;
+        this.reports = [];
+        this.title = 'Not a manager';
+        this.bonus = 0;
+    }
+
+    hire(employee) {
+        this.reports.push(employee)
+        const reportCount = this.reports.length
+        if (reportCount === 0) {
+            this.title = 'Not a manager';
+        }
+        else if (reportCount >= 1 && reportCount <= 3) {
+            this.title = 'Barely Manager'
+        }
+        else if (reportCount >= 4 && reportCount <= 10) {
+            this.title = 'Mostly Manager'
+        }
+        else if (reportCount >= 11 && reportCount <= 50) {
+            this.title = 'Manager'
+        }
+        else if (reportCount >= 51 && reportCount <= 100) {
+            this.title = 'Manager Plus'
+        }
+        else {
+            this.title = 'Bestest Manager'
+        }
+    }
+
+    fire(index) {
+        this.bonus += 100
+        this.reports = this.reports.filter((report, i) => {
+            return i !== index;
+        })
+    }
 
 
+    // updateManagerTitle() {
+    //     const reportCount = this.reports.length
+    //     if (reportCount === 0) {
+    //         this.title = 'Not a manager';
+    //     }
+    //     else if (reportCount >= 1 && reportCount <= 3) {
+    //         this.title = 'Barely Manager'
+    //     }
+    //     else if (reportCount >= 4 && reportCount <= 10) {
+    //         this.title = 'Mostly Manager'
+    //     }
+    //     else if (reportCount >= 11 && reportCount <= 50) {
+    //         this.title = 'Manager'
+    //     }
+    //     else if (reportCount >= 51 && reportCount <= 100) {
+    //         this.title = 'Manager Plus'
+    //     }
+    //     else {
+    //         this.title = 'Bestest Manager'
+    //     }
+    // }
+}
 /*
 BLACK DIAMOND
 Widget Co has a factory that makes widgets.
