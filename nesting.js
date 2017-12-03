@@ -161,8 +161,22 @@ let recordCleaner = () => {
 //    If the number is even, replace it with 'even'.
 // 4. Return the modified numsArr.
 
-var numsArr = [ [1, 2, 3, 4], [5, 6], [7, 8, 9, 10, 11]];
+var numsArr = [[1, 2, 3, 4], [5, 6], [7, 8, 9, 10, 11]];
 
+function looper(arr) {
+  var newArr = []
+  for (var i = 0; i < arr.length; i++) {
 
+    for (var j = 0; j < arr[i].length; j++) {
 
-
+      if (numsArr[i][j] % 2 !== 0) {
+        newArr.push('odd')
+      }
+      else {
+        newArr.push('even')
+      }
+    }
+  }
+  return newArr
+}
+looper(numsArr)
