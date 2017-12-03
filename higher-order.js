@@ -157,7 +157,9 @@ const orders = [{"price":15,"tax":0.09},{"price":42,"tax":0.07},{"price":56,"tax
 {"price":72,"tax":0.14},{"price":51,"tax":0.09},{"price":89,"tax":0.15},
 {"price":48,"tax":0.13}]
 
-let ordersTotal = orders.map(x => x.price)
+let ordersTotal = (arr) => arr.map(x => x.price + x.tax)
+
+// console.log(ordersTotal(orders));
 
 // Below we have an array of purchases
 // We want to create a total for the purchases, but only want to total Bob's
@@ -171,4 +173,10 @@ const purchases = [{"owner":"Barry","price":103},{"owner":"Bob","price":75},
 {"owner":"Barry","price":30},{"owner":"Barry","price":129},{"owner":"Barry","price":38},
 {"owner":"Bob","price":133},{"owner":"Barry","price":109},{"owner":"Bob","price":115}]
 
-let bobsTotal // Your code here
+let bobsTotal = purchases.reduce((a, v) => {
+    if (v.owner === 'Bob') {
+        return a + v.price
+    } else {
+        return a
+    }
+}, 0)
